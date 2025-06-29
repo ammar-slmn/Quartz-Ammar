@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: " 🛠️",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -29,26 +29,26 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#B3B4BD",           // Clean light background
+          lightgray: "#e9ecef",       // Subtle borders
+          gray: "#adb5bd",            // Medium contrast elements
+          darkgray: "#495057",        // Body text - good readability
+          dark: "#212529",            // Headers and strong text
+          secondary: "#0A2C59",       // Deep blue for links (from second image)
+          tertiary: "#6c757d",        // Muted hover states
+          highlight: "rgba(10, 44, 89, 0.08)",  // Light blue highlight
+          textHighlight: "#fff3cd",   // Warm highlight for text selections
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#1a1d21",           // Rich dark background (from first image)
+          lightgray: "#2d3338",       // Subtle dark borders
+          gray: "#495057",            // Medium contrast in dark
+          darkgray: "#adb5bd",        // Light text for readability
+          dark: "#f8f9fa",            // White/light headers
+          secondary: "#86C232",       // Bright green accent (from first image)
+          tertiary: "#61892F",        // Darker green for visited/hover
+          highlight: "rgba(134, 194, 50, 0.15)",  // Green highlight overlay
+          textHighlight: "#61892F88", // Semi-transparent green for text highlights
         },
       },
     },
