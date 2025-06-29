@@ -3,6 +3,7 @@ title: The Process - Fundamentals and Hurry Sickness
 date: 29/06/2025
 tags:
   - notes
+  - life
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse commodo ante sed dictum rhoncus. Curabitur purus nunc, tincidunt non ornare sed, varius id diam. Donec feugiat interdum gravida. Aliquam leo tellus, porta at consequat imperdiet, iaculis nec mauris. Vestibulum sapien nisi, faucibus vel elementum sed, porttitor non mauris. Ut eget cursus neque. Pellentesque porta volutpat ante.
