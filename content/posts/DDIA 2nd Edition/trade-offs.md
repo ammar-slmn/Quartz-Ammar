@@ -4,7 +4,6 @@ tags:
   - study-notes
 description: My personal notes on Chapter 1 of Designing Data-Intensive Applications, 2nd Edition.
 ---
-
 Very basic notes on the first chapter which coving 4 basic topics: 
 1. Operational Versus Analytical Systems
 2. Cloud Versus Self-Hosting 
@@ -19,7 +18,6 @@ Should you build or buy? Things that are a competitive advantage to the org shou
 **Spectrum:** At one extreme is bespoke software that you write and run in-house; at the other extreme are widely products/services that are implemented and operated by an external vendor. The middle ground is an off-the-shelf software that you can *self-host* in a variety of ways. 
 
 How do you deploy the services though? On premises? Cloud? 
-
 ### Pros and Cons of Cloud Services: 
 
 Saves time, money and allows for faster iteration compared to setting up your infrastructure, but if you already have experience setting up and operating the infra and the load is manageable - then you can buy your own machines and run the software on them yourself. 
@@ -70,9 +68,29 @@ How to avoid this? Build on dedicated storage services that are optimised for ce
 In a traditional systems architecture, the same computer is responsible for both storage (disk) and computation (CPU and RAM) but in cloud native systems, these responsibilities have become somewhat separated (S3 only stores files, have to write code elsewhere to analyse them). 
 
 **Multitenant:** Instead of having a separate machine for each customer, data and computation for several customers are handled on the same shared hardware by the same service. 
+
 **Allows for:** 
 - Better hardware utilisation.
 - Easier scalability.
 - Easier management by the cloud provider, but also requires careful engineering. 
-### Operations in the Cloud Era 
 
+### Operations in the Cloud Era
+
+**Database Administrator or Sysadmin**: Staff who manage the org's server-side data infrastructure. 
+More recently, companies have integrated roles of development and operations into teams with a shared responsibility for both backend services and data infrastructure (DevOps or SRE).
+
+For self-hosted systems, operations involve work at the level of individual machines (capacity planning, provisioning new machines and moving services across them). Cloud services provide an API that hides the complexity (**metered billing** to store data without planning needs in advance).
+
+**SRE/DevOps Philosophy:** 
+- Automations, repeatable processes over manual one-off jobs. 
+- Use temp VMs and services rather than long-running servers
+- Enable frequent application updates
+- Learn from Incidents 
+- Document and preserve system knowledge for the system 
+
+**Customers still need to involved in operations:** 
+- Capacity Planning -> Financial Planning 
+- Performance Optimisation -> Cost Optimisation 
+- Cloud Services have quotas and while they can be easier and quicker than provisioning and running your own infra, you have to learn abut them. 
+- Security cannot be outsourced to services, neither can monitoring the load on them or managing interfaces between your services. 
+### Distributed Versus Single-Node Systems 
