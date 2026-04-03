@@ -4,13 +4,15 @@ tags:
   - study-notes
 description: My personal notes on Chapter 1 of Designing Data-Intensive Applications, 2nd Edition.
 ---
-Very basic notes on the first chapter which coving 4 basic topics: 
+**TLDR -** The theme behind this chapter has been to understand trade-offs, many questions do not have one right answer. 
+
+Very basic notes on the first chapter which **covering 4 basic topics:** 
 1. Operational Versus Analytical Systems
 2. Cloud Versus Self-Hosting 
 3. Distributed Versus Single-Node Systems
 4. Data Systems, Law and Society 
 
-**There are no notes on Topic 1 (Operational vs Analytical Systems)** as I read it before I started writing :). The chapter itself is not technical in content, but rather sets up basic concepts and definitions for the rest of the book. 
+**There are no notes on Topic 1 or 4 as I read them separately before I started writing :). The chapter itself is not technical in content, but rather sets up basic concepts and definitions for the rest of the book. 
 ## Cloud Versus Self-Hosting
 
 Should you build or buy? Things that are a competitive advantage to the org should be done in house, while routine work should be left to a vendor (like a CPU, not everybody is a semiconductor manufacturer). 
@@ -93,4 +95,46 @@ For self-hosted systems, operations involve work at the level of individual mach
 - Performance Optimisation -> Cost Optimisation 
 - Cloud Services have quotas and while they can be easier and quicker than provisioning and running your own infra, you have to learn abut them. 
 - Security cannot be outsourced to services, neither can monitoring the load on them or managing interfaces between your services. 
-### Distributed Versus Single-Node Systems 
+
+## Distributed Versus Single-Node Systems 
+
+**Distributed Systems:** A system that involves several machines communicating via a network. Each machine/process is called a **node**. 
+
+If an app has two or more users or if data is stored in one services but processed in another, the system is unavoidably distributed as communication will occur over a network. If one node goes down, you can use multiple machines to increase reliability (Fault Tolerance). Other Reasons to implement include: Scalability, Latency (each user can be served from a near-by server), Elasticity, Specialised Hardware, Legal Compliance and Sustainability. 
+
+### Problems with Distributed Systems 
+
+**Downsides:** 
+1. Requests deal with the possibility of failure (network interruptions, service crashes) and hence no response will be received. Retrying is not always safe. 
+2. Making a call to another service is much slower than calling a function on the same node. Its faster to bring computation to the machine that has the data rather than transferring data. More nodes != faster. 
+3. Tough to debug and troubleshoot a distributed system. Requires observability. Tools like OpenTelemetry, Zipkin and Jaeger allow you to track which client called which server for each operation and how long each call took. 
+4. Maintaining consistency across different services becomes the app's problem when each service has its own DB. 
+
+For all these reasons, performing a task on a single machine is much simpler and cheaper than setting up a distributed system. 
+### Microservices and Serverless 
+Way of building apps was traditionally called a ***service-oriented architecture*** and has been refined into a ***microservices architecture***.  Each service has **one** well defined purpose and exposes an API that can be called by clients via the network. Thus, a complex app can be decomposed into multiple services. 
+
+**Advantages:**
+- Each service can be updated independently
+- Reduced coordination between teams
+- Service has its own hardware resources
+- Service owners are free to change implementation without affecting clients
+- Do not usually share DBs, which avoids a negative impact on queries
+
+**Disadvantages:** 
+- Breeds complexity
+- Testing can be complicated 
+- Each service requires infrastructure to deploy new releases
+- Challenging to change API fields since clients expect certain fields
+
+**Microservices are primarily a technical solution to a people problem:** Allowing teams to make progress independently without having to coordinate with each other. Good in a large company, unnecessary overhead in a smaller one.
+
+**Serverless:** Another approach to deploying services in which management of the infrastructure is outsourced to a cloud vendor. In serverless, the provider automatically allocates and frees hardware resources as needed based on incoming requests. **Brings metered billing to code execution**. Providers impose a time limit on function execution and limited runtime environments. Services can suffer from slow start times when a function is invoked. **Still runs on a server, name is misleading!!** 
+### Cloud Computing Versus Supercomputing 
+
+An alternative to cloud computing is ***high performance computing (HPC)***. There are overlaps, but HPC has different priorities and uses different techniques. **Main Differences:** 
+- Supercomputers are used for computationally intensive scientific tasks (climate modeling, complex optimisation problems and solving partial differential equations). 
+- Supercomputers run large batch jobs that store the state of their computation to disk from time to time. If a node fails, you can stop the entire cluster workload, repair the node and then restart computation. 
+- Nodes communicate through shared memory and RDMA, which support high bandwidth and low latency but assume a high level of trust. 
+- Supercomputers use specialised network topologies, such as multidimensional meshes.
+- Supercomputers assume nodes are close together.
