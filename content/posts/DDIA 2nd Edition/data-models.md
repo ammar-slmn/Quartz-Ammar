@@ -80,8 +80,26 @@ Document databases are both normalised & denormalized but are more associated wi
 - Slower to query (since it requires joins) 
 - Better for OLTP systems where both reads and writes need to be quick 
 - Cost of joins can become problematic in large-scale systems 
+
 **Denormalized Data:** 
 - Faster to read (fewer joins) 
 - More expensive to write (more copies to update, more disk space used) 
 - Better for analytical systems as they perform updates in bulk 
-#### Many-to-One and Many-to-Many Relationships
+### Many-to-One and Many-to-Many Relationships
+The region_id field is an example of a many-to-one relationship as many people live in the same region, but we assume that each person lives in only one region at any one time. Introducing entities for organisations and schools would lead to many-to-many relationships as one person may have worked for several organisations and an organisation has several employees (past or present). In a relational model, such a relationship is usually represented as an ***associative table***, or ***join table***. 
+
+Many-to-many relationships often need to be queried in both directions and one way of enabling this is storing ID references on both sides. This representation is denormalized, since the relationship is stored in two places, which could become inconsistent with each other. A normalised version stores this relationship in one place and relies on ***secondary indexes*** to solve this problem. 
+### Stars and Snowflakes: Schemas for Analytics 
+**Data warehouses are usually relational** and these are the widely used conventions for the structure of tables in a warehouse: 
+- Star schema
+- Snowflake schema
+- Dimensional modelling 
+- One big table (OBT) 
+### When to Use Which Model 
+**The main arguments for the document model are:** schema flexibility, better performance due to locality, and that some apps are closer to the object model used by the application. **Relational models can lead to** cumbersome schemas and unnecessarily complicated code. 
+
+**Document Model Limitations:** Cannot refer directly to a nested item within a document; instead, you need to say something like, “the second item in the list of positions for user 251.” If you need to reference nested items, a relational approach works better, since you can refer to any item directly by its ID.
+
+The document mode supports ordered drop down lists much better as items can be stored in a JSON array. There isn't a standard way of doing so in reorderable lists and tricks such as sorting by an integer column, maintaining a linked list of IDs or using fractional indexing. 
+#### Schema Flexibility in the Document Model 
+Stopped here for today blud 
