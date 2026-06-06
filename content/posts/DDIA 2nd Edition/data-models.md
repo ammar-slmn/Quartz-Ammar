@@ -1,12 +1,12 @@
 ---
-title: Chapter 3 - Data Models and Query Languages
+title: Data Models and Query Languages
 tags:
   - study-notes
 description: My notes on Chapter 3 of Designing Data-Intensive Applications, 2nd Edition.
 ---
 Data models might be the most important part of developing software as they have a profound effect on how software is written. Software is built upon layers and layers of different data models all the way down to the hardware level where bytes are represented as electrical currents, pulses and magnetic fields etc. 
 
-Some data is easier to express and query in one model but tougher in another. Many of the query languages discussed in this chapter are ***declarative***, meaning which means that you specify the pattern of the data you want, what conditions the results must meet and how you want the data to be transformed, but not how to achieve that goal. The DB's query optimiser decides which indexes and joins to use and in which order to execute the different parts of the query. This contrasts with most programming languages where you write an algorithm explicitly instructing thew computer of which operations to perform in which order.
+Some data is easier to express and query in one model but tougher in another. Many of the query languages discussed in this chapter are ***declarative***, meaning which means that you specify the pattern of the data you want, what conditions the results must meet and how you want the data to be transformed, but not how to achieve that goal. The DB's query optimiser decides which indexes and joins to use and in which order to execute the different parts of the query. This contrasts with most programming languages where you write an algorithm explicitly instructing thew computer of which operations to perform in which order. 
 
 **Example:** A DB can execute a query in parallel across multiple CPU cores and machines, without us having to implement this parallel execution ourselves. 
 ## Relational VS Document Models
@@ -99,7 +99,5 @@ Many-to-many relationships often need to be queried in both directions and one w
 **The main arguments for the document model are:** schema flexibility, better performance due to locality, and that some apps are closer to the object model used by the application. **Relational models can lead to** cumbersome schemas and unnecessarily complicated code. 
 
 **Document Model Limitations:** Cannot refer directly to a nested item within a document; instead, you need to say something like, “the second item in the list of positions for user 251.” If you need to reference nested items, a relational approach works better, since you can refer to any item directly by its ID.
-
 The document mode supports ordered drop down lists much better as items can be stored in a JSON array. There isn't a standard way of doing so in relational models and tricks such as sorting by an integer column, maintaining a linked list of IDs or using fractional indexing. 
-
 #### Schema Flexibility in the Document Model (Stopped Here, Continue from here)
